@@ -1,11 +1,13 @@
+from src.factories.motorcycle import build_motorcycle
 from src.models.data_from_client import DataFromClient
 
 
-repository = set()
+repository = []
 
 
 def process_new_motorcyle(
     data_from_client: DataFromClient,
 ):
-    repository.add(tuple(data_from_client))
+    motorcycle = build_motorcycle(**data_from_client.dict())
+    repository.append(motorcycle)
     return repository
