@@ -16,3 +16,8 @@ class MotorcycleListRepository(MotorcycleRepository):
         filtered_list.append(motorcycle)
         self._collection = filtered_list
         return motorcycle
+
+    def remove(self, motorcycle: Motorcycle):
+        filtered_list = [m for m in self._collection if m.name != motorcycle.name]
+        self._collection = filtered_list
+        return motorcycle

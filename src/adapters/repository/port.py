@@ -12,3 +12,7 @@ class MotorcycleRepository(abc.ABC):
     @abc.abstractmethod
     def update(self, data: dict) -> Motorcycle:
         pass
+
+    @abc.abstractmethod
+    def remove(self, data: dict) -> Motorcycle:
+        pass

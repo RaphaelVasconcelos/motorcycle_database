@@ -28,3 +28,12 @@ def test_it_should_update_motorcycle(motorcycle):
     assert first_motorcycle.name == updated_motorcycle.name
     assert first_motorcycle.manufacturer == updated_motorcycle.manufacturer
     assert first_motorcycle.release_year == updated_motorcycle.release_year
+
+
+def test_it_should_remove_motorcycle(motorcycle):
+    list_repository = MotorcycleListRepository()
+    list_repository.add(motorcycle)
+
+    list_repository.remove(motorcycle)
+
+    assert len(list_repository._collection) == 0
