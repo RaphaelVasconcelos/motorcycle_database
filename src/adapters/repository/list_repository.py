@@ -20,4 +20,3 @@ class MotorcycleListRepository(MotorcycleRepository):
     def remove(self, motorcycle: Motorcycle):
         filtered_list = [m for m in self._collection if m.name != motorcycle.name]
         self._collection = filtered_list
-        return motorcycle

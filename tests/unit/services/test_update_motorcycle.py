@@ -10,6 +10,6 @@ def test_it_should_update_motorcycle(data_from_client):
 
     updated_motorcycle = update_motorcyle(motorcycle_to_update)
 
-    assert updated_motorcycle.name == updated_motorcycle.name
-    assert updated_motorcycle.manufacturer == updated_motorcycle.manufacturer
-    assert updated_motorcycle.release_year == updated_motorcycle.release_year
+    assert updated_motorcycle.name == motorcycle_to_update.name
+    assert updated_motorcycle.manufacturer == motorcycle_to_update.manufacturer
+    assert updated_motorcycle.release_year == motorcycle_to_update.release_year
