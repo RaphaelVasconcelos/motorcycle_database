@@ -3,7 +3,7 @@ from fastapi.encoders import jsonable_encoder
 from fastapi.responses import JSONResponse
 from src.entrypoints.payload_models import ClientPayload
 from src.factories.data_from_client import build_data_from_client
-from src.services.remove_motorcycle import remove_motorcyle
+from src.services.motorcycle_manager import remove_motorcyle
 
 
 def handle_remove_motorcycle(client_payload: ClientPayload) -> Response:
