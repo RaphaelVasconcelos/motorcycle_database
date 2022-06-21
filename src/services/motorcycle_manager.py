@@ -27,3 +27,19 @@ def update_motorcyle(
     motorcycle = build_motorcycle(**data_from_client.dict())
     motorcycle_updated = repository.update(motorcycle)
     return motorcycle_updated
+
+
+def get_motorcyle(
+    data_from_client: DataFromClient,
+    repository: MotorcycleListRepository = MotorcycleListRepository()
+):
+    motorcycle = build_motorcycle(**data_from_client.dict())
+    returned_motorcycle = repository.get(motorcycle)
+    return returned_motorcycle
+
+
+def motorcyle_list(
+    repository: MotorcycleListRepository = MotorcycleListRepository()
+):
+    motorcycle_list = repository.list()
+    return motorcycle_list

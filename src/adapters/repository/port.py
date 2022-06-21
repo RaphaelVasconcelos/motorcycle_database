@@ -16,3 +16,11 @@ class MotorcycleRepository(abc.ABC):
     @abc.abstractmethod
     def remove(self, data: dict) -> Motorcycle:
         pass
+
+    @abc.abstractmethod
+    def get(self, data: dict) -> Motorcycle:
+        pass
+
+    @abc.abstractmethod
+    def list(self, data: dict) -> Motorcycle:
+        pass
