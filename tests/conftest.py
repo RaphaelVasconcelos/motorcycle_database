@@ -1,3 +1,4 @@
+from unittest import mock
 import pytest
 from src.entrypoints.payload_models import ClientPayload
 
@@ -31,3 +32,24 @@ def data_from_client(data_from_client_message):
 @pytest.fixture
 def motorcycle(data_from_client_message):
     return Motorcycle.parse_obj(data_from_client_message)
+
+
+@pytest.fixture
+async def mock_get_list_repository(motorcycle):
+    method_path = (
+        'src.adapters.repository.list_repository.MotorcycleListRepository.get'
+    )
+    with mock.patch(method_path, return_value=motorcycle) as mocked_method:
+        yield mocked_method
+
+
+@pytest.fixture
+async def mock_list_repository(motorcycle):
+    motorcycle_list = []
+    motorcycle_list.append(motorcycle)
+
+    method_path = (
+        'src.adapters.repository.list_repository.MotorcycleListRepository.list'
+    )
+    with mock.patch(method_path, return_value=motorcycle_list) as mocked_method:
+        yield mocked_method
