@@ -1,17 +1,18 @@
 from pymongo import MongoClient
-from src.adapters.repository.configs import MongoDbConfig
+from src.adapters.repository.configs import MotorcycleMongoDbRepositoryConfig
 from src.adapters.repository.port import MotorcycleRepository
 from src.models.motorcycle import Motorcycle
 
 
-class MongoDbRepository(MotorcycleRepository):
-    def __init__(self, config: MongoDbConfig = MongoDbConfig()):
+class MongoDbMotorcycleRepository(MotorcycleRepository):
+    def __init__(self, config: MotorcycleMongoDbRepositoryConfig = MotorcycleMongoDbRepositoryConfig()):
         self._client = MongoClient(config.connection_string)
         self.motorcycle_db = self._client[config.database]
 
     def add(self, motorcycle: Motorcycle):
         collection_name = self.motorcycle_db['motorcycles']
-        collection_name.insert_one(motorcycle.dict())
+        result = collection_name.insert_one(motorcycle.dict())
+        return result.acknowledged
 
     def update(self, motorcycle: Motorcycle):
         pass

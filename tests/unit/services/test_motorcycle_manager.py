@@ -10,11 +10,9 @@ from src.services.motorcycle_manager import (
 
 
 def test_it_should_persist_new_motorcycle(data_from_client):
-    motorcycle_added = process_new_motorcyle(data_from_client)
+    motorcycle_was_add = process_new_motorcyle(data_from_client)
 
-    assert motorcycle_added.name == data_from_client.name
-    assert motorcycle_added.manufacturer == data_from_client.manufacturer
-    assert motorcycle_added.release_year == data_from_client.release_year
+    assert motorcycle_was_add is True
 
 
 def test_it_should_remove_motorcycle(data_from_client):

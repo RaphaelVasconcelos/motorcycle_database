@@ -3,7 +3,7 @@ import os
 
 
 @dataclass
-class MongoDbConfig:
+class MotorcycleMongoDbRepositoryConfig:
     user: str = os.environ['MONGODB_USER']
     password: str = os.environ['MONGODB_PASSWORD']
     cluster: str = os.environ['MONGODB_CLUSTER']

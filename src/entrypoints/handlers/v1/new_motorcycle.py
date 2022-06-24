@@ -8,6 +8,6 @@ from src.services.motorcycle_manager import process_new_motorcyle
 
 def handle_new_motorcycle(client_payload: ClientPayload) -> Response:
     data_from_client = build_data_from_client(**client_payload.dict())
-    motorcycle = process_new_motorcyle(data_from_client)
+    result = process_new_motorcyle(data_from_client)
 
-    return JSONResponse(jsonable_encoder(motorcycle))
+    return JSONResponse(jsonable_encoder(result))
