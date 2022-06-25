@@ -32,7 +32,7 @@ def update_motorcyle(
 
 def get_motorcyle(
     data_from_client: DataFromClient,
-    repository: MotorcycleListRepository = MotorcycleListRepository()
+    repository: MongoDbMotorcycleRepository = MongoDbMotorcycleRepository()
 ):
     motorcycle = build_motorcycle(**data_from_client.dict())
     returned_motorcycle = repository.get(motorcycle)

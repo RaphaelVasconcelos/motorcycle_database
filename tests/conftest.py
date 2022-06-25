@@ -35,9 +35,9 @@ def motorcycle(data_from_client_message):
 
 
 @pytest.fixture
-async def mock_get_list_repository(motorcycle):
+def fake_get_motorcycle_from_mongo_repository(motorcycle):
     method_path = (
-        'src.adapters.repository.list_repository.MotorcycleListRepository.get'
+        'src.adapters.repository.mongodb.MongoDbMotorcycleRepository.get'
     )
     with mock.patch(method_path, return_value=motorcycle) as mocked_method:
         yield mocked_method

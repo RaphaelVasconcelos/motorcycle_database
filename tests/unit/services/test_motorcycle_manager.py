@@ -37,15 +37,14 @@ def test_it_should_update_motorcycle(data_from_client):
     assert updated_motorcycle.release_year == motorcycle_to_update.release_year
 
 
-def test_it_should_get_motorcycle(data_from_client):
-    list_repository = MotorcycleListRepository()
-    motorcycle_to_get = process_new_motorcyle(data_from_client, list_repository)
+def test_it_should_get_motorcycle(data_from_client, motorcycle):
+    process_new_motorcyle(data_from_client)
 
-    returned_motorcycle = get_motorcyle(motorcycle_to_get, list_repository)
+    returned_motorcycle = get_motorcyle(motorcycle)
 
-    assert returned_motorcycle.name == data_from_client.name
-    assert returned_motorcycle.manufacturer == data_from_client.manufacturer
-    assert returned_motorcycle.release_year == data_from_client.release_year
+    assert returned_motorcycle["name"] == data_from_client.name
+    assert returned_motorcycle["manufacturer"] == data_from_client.manufacturer
+    assert returned_motorcycle["release_year"] == data_from_client.release_year
 
 
 def test_it_should_list_motorcycles(data_from_client):
