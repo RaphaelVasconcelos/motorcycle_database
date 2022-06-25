@@ -24,5 +24,7 @@ class MongoDbMotorcycleRepository(MotorcycleRepository):
         collection_name = self.motorcycle_db['motorcycles']
         return collection_name.find_one({"name": motorcycle.name})
 
-    def list(self):
-        pass
+    def motorcycle_list(self):
+        collection_name = self.motorcycle_db['motorcycles']
+        cursor = collection_name.find({})
+        return list(cursor)

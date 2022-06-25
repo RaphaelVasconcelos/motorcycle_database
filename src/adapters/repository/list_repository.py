@@ -25,6 +25,6 @@ class MotorcycleListRepository(MotorcycleRepository):
         filtered_list = [m for m in self._collection if m.name == motorcycle.name]
         return filtered_list[0]
 
-    def list(self):
+    def motorcycle_list(self):
         list = [m for m in self._collection]
         return list

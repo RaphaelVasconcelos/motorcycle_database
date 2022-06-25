@@ -1,5 +1,7 @@
 from unittest import mock
+from pymongo import MongoClient
 import pytest
+from src.adapters.repository.configs import MotorcycleMongoDbRepositoryConfig
 from src.entrypoints.payload_models import ClientPayload
 
 from src.models.data_from_client import DataFromClient
@@ -35,6 +37,15 @@ def motorcycle(data_from_client_message):
 
 
 @pytest.fixture
+def mongodb_repository(motorcycle):
+    config = MotorcycleMongoDbRepositoryConfig()
+    client = MongoClient(config.connection_string)
+    motorcycle_db = client[config.database]
+    collection_name = motorcycle_db['motorcycles']
+    collection_name.insert_one(motorcycle.dict())
+
+
+@pytest.fixture
 def fake_get_motorcycle_from_mongo_repository(motorcycle):
     method_path = (
         'src.adapters.repository.mongodb.MongoDbMotorcycleRepository.get'
@@ -43,13 +54,23 @@ def fake_get_motorcycle_from_mongo_repository(motorcycle):
         yield mocked_method
 
 
+@pytest.fixture(autouse=True)
+def clean_mongo_motorcycle_collection():
+    mongodb_repository_config = MotorcycleMongoDbRepositoryConfig()
+    client = MongoClient(mongodb_repository_config.connection_string)
+    motorcycle_db = client[mongodb_repository_config.database]
+    collection_name = motorcycle_db['motorcycles']
+    collection_name.delete_many({})
+
+
 @pytest.fixture
-async def mock_list_repository(motorcycle):
+async def fake_list_motorcycle_repository(motorcycle):
+    clean_mongo_motorcycle_collection()
     motorcycle_list = []
     motorcycle_list.append(motorcycle)
 
     method_path = (
-        'src.adapters.repository.list_repository.MotorcycleListRepository.list'
+        'src.adapters.repository.mongodb.MongoDbMotorcycleRepository.list'
     )
     with mock.patch(method_path, return_value=motorcycle_list) as mocked_method:
         yield mocked_method

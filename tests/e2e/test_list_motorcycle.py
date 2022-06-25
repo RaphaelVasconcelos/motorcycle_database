@@ -4,8 +4,8 @@ import pytest
 
 
 @pytest.mark.asyncio
-@pytest.mark.usefixtures('mock_list_repository')
-async def test_handle_get_motorcycle(
+@pytest.mark.usefixtures('mongodb_repository')
+async def test_handle_list_motorcycle(
     http_client: AsyncClient,
     client_payload,
     motorcycle,
@@ -15,4 +15,4 @@ async def test_handle_get_motorcycle(
         json=json.loads(client_payload.json())
     )
     assert response.status_code == 200
-    assert response.json() == [motorcycle.dict()]
+    assert response.json()[0]["name"] == motorcycle.dict()["name"]

@@ -54,7 +54,7 @@ def test_it_should_return_a_list_of_motorcycles(motorcycle):
     list_repository = MotorcycleListRepository()
     list_repository.add(motorcycle)
 
-    motorcyle_list = list_repository.list()
+    motorcyle_list = list_repository.motorcycle_list()
     first_motorcycle = motorcyle_list[0]
 
     assert len(motorcyle_list) == 1

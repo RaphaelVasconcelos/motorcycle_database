@@ -48,13 +48,12 @@ def test_it_should_get_motorcycle(data_from_client, motorcycle):
 
 
 def test_it_should_list_motorcycles(data_from_client):
-    list_repository = MotorcycleListRepository()
-    process_new_motorcyle(data_from_client, list_repository)
+    process_new_motorcyle(data_from_client)
 
-    returned_motorcycle_list = motorcyle_list(list_repository)
+    returned_motorcycle_list = motorcyle_list()
     first_motorcycle = returned_motorcycle_list[0]
 
     assert len(returned_motorcycle_list) == 1
-    assert first_motorcycle.name == data_from_client.name
-    assert first_motorcycle.manufacturer == data_from_client.manufacturer
-    assert first_motorcycle.release_year == data_from_client.release_year
+    assert first_motorcycle["name"] == data_from_client.name
+    assert first_motorcycle["manufacturer"] == data_from_client.manufacturer
+    assert first_motorcycle["release_year"] == data_from_client.release_year

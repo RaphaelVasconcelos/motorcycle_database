@@ -22,5 +22,5 @@ class MotorcycleRepository(abc.ABC):
         raise NotImplementedError
 
     @abc.abstractmethod
-    def list(self, data: dict) -> Motorcycle:
+    def motorcycle_list(self, data: dict) -> Motorcycle:
         raise NotImplementedError

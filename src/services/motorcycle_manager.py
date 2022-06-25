@@ -40,7 +40,7 @@ def get_motorcyle(
 
 
 def motorcyle_list(
-    repository: MotorcycleListRepository = MotorcycleListRepository()
+    repository: MongoDbMotorcycleRepository = MongoDbMotorcycleRepository()
 ):
-    motorcycle_list = repository.list()
+    motorcycle_list = repository.motorcycle_list()
     return motorcycle_list
