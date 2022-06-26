@@ -15,7 +15,9 @@ class MongoDbMotorcycleRepository(MotorcycleRepository):
         return result.acknowledged
 
     def update(self, motorcycle: Motorcycle):
-        pass
+        collection_name = self.motorcycle_db['motorcycles']
+        result = collection_name.replace_one({"name": motorcycle.name}, motorcycle.dict())
+        return result.acknowledged
 
     def remove(self, motorcycle: Motorcycle):
         collection_name = self.motorcycle_db['motorcycles']
