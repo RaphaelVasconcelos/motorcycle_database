@@ -9,16 +9,15 @@ def process_new_motorcyle(
     repository: MongoDbMotorcycleRepository = MongoDbMotorcycleRepository()
 ):
     motorcycle = build_motorcycle(**data_from_client.dict())
-    result = repository.add(motorcycle)
-    return result
+    return repository.add(motorcycle)
 
 
 def remove_motorcyle(
     data_from_client: DataFromClient,
-    repository: MotorcycleListRepository = MotorcycleListRepository()
+    repository: MongoDbMotorcycleRepository = MongoDbMotorcycleRepository()
 ):
     motorcycle = build_motorcycle(**data_from_client.dict())
-    repository.remove(motorcycle)
+    return repository.remove(motorcycle)
 
 
 def update_motorcyle(

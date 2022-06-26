@@ -18,7 +18,9 @@ class MongoDbMotorcycleRepository(MotorcycleRepository):
         pass
 
     def remove(self, motorcycle: Motorcycle):
-        pass
+        collection_name = self.motorcycle_db['motorcycles']
+        result = collection_name.delete_one({"name": motorcycle.name})
+        return result.acknowledged
 
     def get(self, motorcycle: Motorcycle):
         collection_name = self.motorcycle_db['motorcycles']

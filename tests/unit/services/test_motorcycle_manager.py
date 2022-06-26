@@ -1,3 +1,4 @@
+import pytest
 from src.adapters.repository.list_repository import MotorcycleListRepository
 from src.models.data_from_client import DataFromClient
 from src.services.motorcycle_manager import (
@@ -16,12 +17,9 @@ def test_it_should_persist_new_motorcycle(data_from_client):
 
 
 def test_it_should_remove_motorcycle(data_from_client):
-    list_repository = MotorcycleListRepository()
-    motorcycle = process_new_motorcyle(data_from_client, list_repository)
+    motorcycle_was_removed = remove_motorcyle(data_from_client)
 
-    remove_motorcyle(motorcycle, list_repository)
-
-    assert len(list_repository._collection) == 0
+    assert motorcycle_was_removed is True
 
 
 def test_it_should_update_motorcycle(data_from_client):
@@ -37,9 +35,8 @@ def test_it_should_update_motorcycle(data_from_client):
     assert updated_motorcycle.release_year == motorcycle_to_update.release_year
 
 
+@pytest.mark.usefixtures('mongodb_repository')
 def test_it_should_get_motorcycle(data_from_client, motorcycle):
-    process_new_motorcyle(data_from_client)
-
     returned_motorcycle = get_motorcyle(motorcycle)
 
     assert returned_motorcycle["name"] == data_from_client.name
@@ -47,9 +44,8 @@ def test_it_should_get_motorcycle(data_from_client, motorcycle):
     assert returned_motorcycle["release_year"] == data_from_client.release_year
 
 
+@pytest.mark.usefixtures('mongodb_repository')
 def test_it_should_list_motorcycles(data_from_client):
-    process_new_motorcyle(data_from_client)
-
     returned_motorcycle_list = motorcyle_list()
     first_motorcycle = returned_motorcycle_list[0]
 

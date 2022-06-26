@@ -11,3 +11,4 @@ async def test_handle_remove_motorcycle(
         json=json.loads(client_payload.json())
     )
     assert response.status_code == 200
+    assert response.json() is True
