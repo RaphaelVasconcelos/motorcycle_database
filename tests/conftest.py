@@ -1,7 +1,7 @@
 from unittest import mock
 from pymongo import MongoClient
 import pytest
-from src.adapters.repository.configs import MotorcycleMongoDbRepositoryConfig
+from src.adapters.repository.configs import MongoDbRepositoryConfig
 from src.entrypoints.payload_models import ClientPayload
 
 from src.models.data_from_client import DataFromClient
@@ -38,7 +38,7 @@ def motorcycle(data_from_client_message):
 
 @pytest.fixture
 def mongodb_repository(motorcycle):
-    config = MotorcycleMongoDbRepositoryConfig()
+    config = MongoDbRepositoryConfig()
     client = MongoClient(config.connection_string)
     motorcycle_db = client[config.database]
     collection_name = motorcycle_db['motorcycles']
@@ -56,7 +56,7 @@ def fake_get_motorcycle_from_mongo_repository(motorcycle):
 
 @pytest.fixture(autouse=True)
 def clean_mongo_motorcycle_collection():
-    mongodb_repository_config = MotorcycleMongoDbRepositoryConfig()
+    mongodb_repository_config = MongoDbRepositoryConfig()
     client = MongoClient(mongodb_repository_config.connection_string)
     motorcycle_db = client[mongodb_repository_config.database]
     collection_name = motorcycle_db['motorcycles']

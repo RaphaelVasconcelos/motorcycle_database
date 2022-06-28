@@ -1,11 +1,11 @@
 from pymongo import MongoClient
-from src.adapters.repository.configs import MotorcycleMongoDbRepositoryConfig
+from src.adapters.repository.configs import MongoDbRepositoryConfig
 from src.adapters.repository.port import MotorcycleRepository
 from src.models.motorcycle import Motorcycle
 
 
 class MongoDbMotorcycleRepository(MotorcycleRepository):
-    def __init__(self, config: MotorcycleMongoDbRepositoryConfig = MotorcycleMongoDbRepositoryConfig()):
+    def __init__(self, config: MongoDbRepositoryConfig = MongoDbRepositoryConfig()):
         self._client = MongoClient(config.connection_string)
         self.motorcycle_db = self._client[config.database]
 
@@ -17,7 +17,7 @@ class MongoDbMotorcycleRepository(MotorcycleRepository):
     def update(self, motorcycle: Motorcycle):
         collection_name = self.motorcycle_db['motorcycles']
         result = collection_name.replace_one({"name": motorcycle.name}, motorcycle.dict())
-        return result.acknowledged
+        return result.modified_count > 0
 
     def remove(self, motorcycle: Motorcycle):
         collection_name = self.motorcycle_db['motorcycles']
