@@ -1,7 +1,7 @@
 from pymongo import MongoClient
 from src.adapters.repository.configs import MongoDbRepositoryConfig
 from src.adapters.repository.user.port import UserRepository
-from src.models.user import User
+from src.models.user.user import User
 
 
 class MongoDbUserRepository(UserRepository):

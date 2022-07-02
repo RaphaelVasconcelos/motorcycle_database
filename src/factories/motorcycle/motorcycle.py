@@ -1,4 +1,4 @@
-from src.models.motorcycle import Motorcycle
+from src.models.motorcycle.motorcycle import Motorcycle
 
 
 def build_motorcycle(**kwargs):

@@ -1,4 +1,4 @@
-from src.factories.user_data_from_client import build_user_data_from_client
+from src.factories.user.user_data_from_client import build_user_data_from_client
 
 
 def test_it_should_build_data_from_client_object(user_data_from_client):

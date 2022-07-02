@@ -1,7 +1,7 @@
 from pymongo import MongoClient
 from src.adapters.repository.configs import MongoDbRepositoryConfig
 from src.adapters.repository.motorcycle.port import MotorcycleRepository
-from src.models.motorcycle import Motorcycle
+from src.models.motorcycle.motorcycle import Motorcycle
 
 
 class MongoDbMotorcycleRepository(MotorcycleRepository):

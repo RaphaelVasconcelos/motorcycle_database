@@ -1,6 +1,6 @@
 from src.adapters.repository.user.mongodb import MongoDbUserRepository
-from src.factories.user import build_user
-from src.models.user_data_from_client import UserDataFromClient
+from src.factories.user.user import build_user
+from src.models.user.user_data_from_client import UserDataFromClient
 
 
 def process_new_user(

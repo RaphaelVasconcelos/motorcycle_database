@@ -4,8 +4,8 @@ import pytest
 from src.adapters.repository.configs import MongoDbRepositoryConfig
 from src.entrypoints.payload_models import ClientPayload
 
-from src.models.data_from_client import DataFromClient
-from src.models.motorcycle import Motorcycle
+from src.models.motorcycle.data_from_client import DataFromClient
+from src.models.motorcycle.motorcycle import Motorcycle
 
 
 @pytest.fixture

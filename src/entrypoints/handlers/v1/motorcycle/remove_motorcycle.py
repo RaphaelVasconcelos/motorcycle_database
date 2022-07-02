@@ -2,7 +2,7 @@ from fastapi import Response
 from fastapi.encoders import jsonable_encoder
 from fastapi.responses import JSONResponse
 from src.entrypoints.payload_models import ClientPayload
-from src.factories.data_from_client import build_data_from_client
+from src.factories.motorcycle.data_from_client import build_data_from_client
 from src.services.motorcycle.motorcycle_manager import remove_motorcyle
 
 

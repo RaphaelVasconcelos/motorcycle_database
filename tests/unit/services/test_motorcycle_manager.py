@@ -1,5 +1,5 @@
 import pytest
-from src.models.data_from_client import DataFromClient
+from src.models.motorcycle.data_from_client import DataFromClient
 from src.services.motorcycle.motorcycle_manager import (
     get_motorcyle,
     motorcyle_list,

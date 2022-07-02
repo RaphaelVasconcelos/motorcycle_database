@@ -1,6 +1,6 @@
 import abc
 
-from src.models.user import User
+from src.models.user.user import User
 
 
 class UserRepository(abc.ABC):

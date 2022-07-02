@@ -1,6 +1,6 @@
 import abc
 
-from src.models.motorcycle import Motorcycle
+from src.models.motorcycle.motorcycle import Motorcycle
 
 
 class MotorcycleRepository(abc.ABC):

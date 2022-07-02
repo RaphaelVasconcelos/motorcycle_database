@@ -2,8 +2,8 @@ from pymongo import MongoClient
 import pytest
 from src.adapters.repository.configs import MongoDbRepositoryConfig
 from src.entrypoints.payload_models import ClientUserPayload
-from src.models.user import User
-from src.models.user_data_from_client import UserDataFromClient
+from src.models.user.user import User
+from src.models.user.user_data_from_client import UserDataFromClient
 
 
 @pytest.fixture

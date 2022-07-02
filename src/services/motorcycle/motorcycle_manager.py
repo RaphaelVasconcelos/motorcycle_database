@@ -1,6 +1,6 @@
 from src.adapters.repository.motorcycle.mongodb import MongoDbMotorcycleRepository
-from src.factories.motorcycle import build_motorcycle
-from src.models.data_from_client import DataFromClient
+from src.factories.motorcycle.motorcycle import build_motorcycle
+from src.models.motorcycle.data_from_client import DataFromClient
 
 
 def process_new_motorcyle(

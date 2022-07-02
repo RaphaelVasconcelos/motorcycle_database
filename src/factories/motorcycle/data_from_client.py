@@ -1,4 +1,4 @@
-from src.models.data_from_client import DataFromClient
+from src.models.motorcycle.data_from_client import DataFromClient
 
 
 def build_data_from_client(**kwargs):

@@ -1,4 +1,4 @@
-from src.factories.data_from_client import build_data_from_client
+from src.factories.motorcycle.data_from_client import build_data_from_client
 
 
 def test_it_should_build_data_from_client_object(data_from_client):
