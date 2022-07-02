@@ -1,4 +1,4 @@
-from src.adapters.repository.mongodb import MongoDbMotorcycleRepository
+from src.adapters.repository.motorcycle.mongodb import MongoDbMotorcycleRepository
 from src.factories.motorcycle import build_motorcycle
 from src.models.data_from_client import DataFromClient
 
