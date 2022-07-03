@@ -1,6 +1,6 @@
 import pytest
 from src.models.user.user_data_from_client import UserDataFromClient
-from src.services.users.user_manager import process_new_user, update_user
+from src.services.users.user_manager import process_new_user, remove_user, update_user
 
 
 def test_it_should_persist_new_user(user_data_from_client):
@@ -14,5 +14,12 @@ def test_it_should_update_user(user_data_from_client):
     user_to_update = UserDataFromClient.parse_obj(user_data_from_client.dict())
     user_to_update.age = "32"
 
-    motorcycle_was_updated = update_user(user_to_update)
-    assert motorcycle_was_updated is True
+    user_was_updated = update_user(user_to_update)
+    assert user_was_updated is True
+
+
+@pytest.mark.usefixtures('mongodb_user_repository')
+def test_it_should_remove_user(user_data_from_client):
+    user_was_removed = remove_user(user_data_from_client)
+
+    assert user_was_removed is True
