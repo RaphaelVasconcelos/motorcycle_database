@@ -16,3 +16,7 @@ class UserRepository(abc.ABC):
     @abc.abstractmethod
     def remove(self, data: dict) -> User:
         raise NotImplementedError
+
+    @abc.abstractmethod
+    def get(self, data: dict) -> User:
+        raise NotImplementedError

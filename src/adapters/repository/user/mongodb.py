@@ -23,3 +23,7 @@ class MongoDbUserRepository(UserRepository):
         collection_name = self.motorcycle_db['users']
         result = collection_name.delete_one({"mail": user.mail})
         return result.deleted_count > 0
+
+    def get(self, user: User):
+        collection_name = self.motorcycle_db['users']
+        return collection_name.find_one({"mail": user.mail})

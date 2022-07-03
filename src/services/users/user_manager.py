@@ -25,3 +25,11 @@ def remove_user(
 ):
     user = build_user(**data_from_client.dict())
     return repository.remove(user)
+
+
+def get_user(
+    data_from_client: UserDataFromClient,
+    repository: MongoDbUserRepository = MongoDbUserRepository()
+):
+    user = build_user(**data_from_client.dict())
+    return repository.get(user)
