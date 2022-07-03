@@ -1,6 +1,6 @@
 import pytest
 from src.models.user.user_data_from_client import UserDataFromClient
-from src.services.users.user_manager import get_user, process_new_user, remove_user, update_user
+from src.services.users.user_manager import get_user, process_new_user, remove_user, update_user, user_list
 
 
 def test_it_should_persist_new_user(user_data_from_client):
@@ -27,8 +27,19 @@ def test_it_should_remove_user(user_data_from_client):
 
 @pytest.mark.usefixtures('mongodb_user_repository')
 def test_it_should_get_user(user_data_from_client, user):
-    returned_motorcycle = get_user(user)
+    returned_user = get_user(user)
 
-    assert returned_motorcycle["name"] == user_data_from_client.name
-    assert returned_motorcycle["mail"] == user_data_from_client.mail
-    assert returned_motorcycle["age"] == user_data_from_client.age
+    assert returned_user["name"] == user_data_from_client.name
+    assert returned_user["mail"] == user_data_from_client.mail
+    assert returned_user["age"] == user_data_from_client.age
+
+
+@pytest.mark.usefixtures('mongodb_user_repository')
+def test_it_should_list_motorcycles(user_data_from_client):
+    returned_user_list = user_list()
+    first_user = returned_user_list[0]
+
+    assert len(returned_user_list) == 1
+    assert first_user["name"] == user_data_from_client.name
+    assert first_user["mail"] == user_data_from_client.mail
+    assert first_user["age"] == user_data_from_client.age

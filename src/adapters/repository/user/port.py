@@ -20,3 +20,7 @@ class UserRepository(abc.ABC):
     @abc.abstractmethod
     def get(self, data: dict) -> User:
         raise NotImplementedError
+
+    @abc.abstractmethod
+    def user_list(self, data: dict) -> User:
+        raise NotImplementedError

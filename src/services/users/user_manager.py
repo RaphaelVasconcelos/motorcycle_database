@@ -33,3 +33,10 @@ def get_user(
 ):
     user = build_user(**data_from_client.dict())
     return repository.get(user)
+
+
+def user_list(
+    repository: MongoDbUserRepository = MongoDbUserRepository()
+):
+    user_list = repository.user_list()
+    return user_list
