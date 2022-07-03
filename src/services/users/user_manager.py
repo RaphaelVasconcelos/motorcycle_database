@@ -9,3 +9,11 @@ def process_new_user(
 ):
     new_user = build_user(**data_from_client.dict())
     return repository.add(new_user)
+
+
+def update_user(
+    data_from_client: UserDataFromClient,
+    repository: MongoDbUserRepository = MongoDbUserRepository()
+):
+    user = build_user(**data_from_client.dict())
+    return repository.update(user)

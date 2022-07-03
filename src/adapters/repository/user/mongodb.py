@@ -13,3 +13,8 @@ class MongoDbUserRepository(UserRepository):
         collection_name = self.motorcycle_db['users']
         result = collection_name.insert_one(user.dict())
         return result.acknowledged
+
+    def update(self, user: User):
+        collection_name = self.motorcycle_db['users']
+        result = collection_name.replace_one({"mail": user.mail}, user.dict())
+        return result.modified_count > 0
