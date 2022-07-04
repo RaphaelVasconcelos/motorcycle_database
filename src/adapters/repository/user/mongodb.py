@@ -1,3 +1,4 @@
+from bson.json_util import dumps, loads
 from pymongo import MongoClient
 from src.adapters.repository.configs import MongoDbRepositoryConfig
 from src.adapters.repository.user.port import UserRepository
@@ -26,7 +27,10 @@ class MongoDbUserRepository(UserRepository):
 
     def get(self, user: User):
         collection_name = self.user_db['users']
-        return collection_name.find_one({"mail": user.mail})
+        cursor = collection_name.find_one({"mail": user.mail})
+        json_data = dumps(cursor)
+        user = User.parse_obj(loads(json_data))
+        return user
 
     def user_list(self):
         collection_name = self.user_db['users']

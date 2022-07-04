@@ -29,9 +29,9 @@ def test_it_should_remove_user(user_data_from_client):
 def test_it_should_get_user(user_data_from_client, user):
     returned_user = get_user(user)
 
-    assert returned_user["name"] == user_data_from_client.name
-    assert returned_user["mail"] == user_data_from_client.mail
-    assert returned_user["age"] == user_data_from_client.age
+    assert returned_user.name == user_data_from_client.name
+    assert returned_user.mail == user_data_from_client.mail
+    assert returned_user.age == user_data_from_client.age
 
 
 @pytest.mark.usefixtures('mongodb_user_repository')
