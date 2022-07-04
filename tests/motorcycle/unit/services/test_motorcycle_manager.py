@@ -35,9 +35,9 @@ def test_it_should_update_motorcycle(data_from_client):
 def test_it_should_get_motorcycle(data_from_client, motorcycle):
     returned_motorcycle = get_motorcyle(motorcycle)
 
-    assert returned_motorcycle["name"] == data_from_client.name
-    assert returned_motorcycle["manufacturer"] == data_from_client.manufacturer
-    assert returned_motorcycle["release_year"] == data_from_client.release_year
+    assert returned_motorcycle.name == data_from_client.name
+    assert returned_motorcycle.manufacturer == data_from_client.manufacturer
+    assert returned_motorcycle.release_year == data_from_client.release_year
 
 
 @pytest.mark.usefixtures('mongodb_repository')

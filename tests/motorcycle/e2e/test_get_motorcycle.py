@@ -4,7 +4,7 @@ import pytest
 
 
 @pytest.mark.asyncio
-@pytest.mark.usefixtures('fake_get_motorcycle_from_mongo_repository')
+@pytest.mark.usefixtures('mongodb_repository')
 async def test_handle_get_motorcycle(
     http_client: AsyncClient,
     client_payload,
