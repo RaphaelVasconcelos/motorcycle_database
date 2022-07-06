@@ -52,25 +52,3 @@ def clean_mongo_motorcycle_collection():
     motorcycle_db = client[mongodb_repository_config.database]
     collection_name = motorcycle_db['motorcycles']
     collection_name.delete_many({})
-
-
-@pytest.fixture
-async def fake_list_motorcycle_repository(motorcycle):
-    clean_mongo_motorcycle_collection()
-    motorcycle_list = []
-    motorcycle_list.append(motorcycle)
-
-    method_path = (
-        'src.adapters.repository.motorcycle.mongodb.MongoDbMotorcycleRepository.list'
-    )
-    with mock.patch(method_path, return_value=motorcycle_list) as mocked_method:
-        yield mocked_method
-
-
-@pytest.fixture
-def fake_get_motorcycle_from_mongo_repository(motorcycle):
-    method_path = (
-        'src.adapters.repository.motorcycle.mongodb.MongoDbMotorcycleRepository.get'
-    )
-    with mock.patch(method_path, return_value=motorcycle) as mocked_method:
-        yield mocked_method
