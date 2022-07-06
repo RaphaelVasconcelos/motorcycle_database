@@ -1,4 +1,3 @@
-from unittest import mock
 from pymongo import MongoClient
 import pytest
 from src.adapters.repository.configs import MongoDbRepositoryConfig
