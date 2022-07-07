@@ -11,3 +11,10 @@ class ClientUserPayload(BaseModel):
     name: str
     mail: str
     age: str
+
+
+class FavoriteMotorcyclePayload(BaseModel):
+    mail_user: str
+    motorcycle_name: str
+    motorycle_manufacturer: str
+    motorycle_release_year: str
