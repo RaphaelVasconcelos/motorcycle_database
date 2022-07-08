@@ -15,3 +15,12 @@ def process_new_favorite_motorcyle(
         return False
 
     return repository.add_favorite_motorcycle(favorite_motorcycle)
+
+
+def remove_favorite_motorcyle(
+    data_from_client: DataFromClient,
+    repository: MongoDbFavoriteMotorcycleRepository = MongoDbFavoriteMotorcycleRepository()
+):
+    favorite_motorcycle = build_favorite_motorcycle(**data_from_client.dict())
+
+    return repository.remove_favorite_motorcycle(favorite_motorcycle)

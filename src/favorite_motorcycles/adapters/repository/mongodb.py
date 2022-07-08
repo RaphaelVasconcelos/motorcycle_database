@@ -1,3 +1,4 @@
+from bson.json_util import dumps, loads
 from pymongo import MongoClient
 from src.adapters.repository.configs import MongoDbRepositoryConfig
 from src.favorite_motorcycles.adapters.repository.port import FavoriteMotorcycleRepository
@@ -19,5 +20,17 @@ class MongoDbFavoriteMotorcycleRepository(FavoriteMotorcycleRepository):
 
     def get_favorite_motorcycle_list(self, favorite_motorcycle: FavoriteMotorcycle):
         collection_name = self.motorcycle_db['users']
-        cursor = collection_name.find({'mail': favorite_motorcycle.mail_user}, {'favorite_motorcycles': 1, '_id': 0})
-        return list(cursor)
+        cursor = collection_name.find_one(
+            {'mail': favorite_motorcycle.mail_user},
+            {'favorite_motorcycles': 1, '_id': 0}
+        )
+        list_favorite_motorcycles = loads(dumps(cursor))
+        return list_favorite_motorcycles["favorite_motorcycles"] if list_favorite_motorcycles else []
+
+    def remove_favorite_motorcycle(self, favorite_motorcycle: FavoriteMotorcycle):
+        collection_name = self.motorcycle_db['users']
+        result = collection_name.update_one(
+            {'mail': favorite_motorcycle.mail_user},
+            {'$pull': {'favorite_motorcycles': favorite_motorcycle.motorycle_name}}
+        )
+        return result.modified_count > 0
