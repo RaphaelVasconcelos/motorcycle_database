@@ -1,4 +1,4 @@
-from src.favorite_motorcycles.models.favorite_motorcycle import FavoriteMotorcycle
+from src.favorite_motorcycles.domain.models.favorite_motorcycle import FavoriteMotorcycle
 
 
 def build_favorite_motorcycle(**kwargs):

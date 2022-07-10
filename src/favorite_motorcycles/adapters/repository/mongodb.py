@@ -2,7 +2,7 @@ from bson.json_util import dumps, loads
 from pymongo import MongoClient
 from src.adapters.repository.configs import MongoDbRepositoryConfig
 from src.favorite_motorcycles.adapters.repository.port import FavoriteMotorcycleRepository
-from src.favorite_motorcycles.models.favorite_motorcycle import FavoriteMotorcycle
+from src.favorite_motorcycles.domain.models.favorite_motorcycle import FavoriteMotorcycle
 
 
 class MongoDbFavoriteMotorcycleRepository(FavoriteMotorcycleRepository):

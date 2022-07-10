@@ -2,8 +2,8 @@ from pymongo import MongoClient
 import pytest
 from src.adapters.repository.configs import MongoDbRepositoryConfig
 from src.entrypoints.payload_models import ClientUserPayload, FavoriteMotorcyclePayload
-from src.favorite_motorcycles.models.favorite_motorcycle import FavoriteMotorcycle
-from src.favorite_motorcycles.models.favorite_motorcycle_data_from_client import FavoriteMotorcycleDataFromClient
+from src.favorite_motorcycles.domain.models.favorite_motorcycle import FavoriteMotorcycle
+from src.favorite_motorcycles.domain.models.favorite_motorcycle_data_from_client import FavoriteMotorcycleDataFromClient
 from src.models.user.user import User
 from src.models.user.user_data_from_client import UserDataFromClient
 
