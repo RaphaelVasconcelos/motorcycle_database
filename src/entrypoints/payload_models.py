@@ -16,5 +16,13 @@ class ClientUserPayload(BaseModel):
 class FavoriteMotorcyclePayload(BaseModel):
     mail_user: str
     motorcycle_name: str
-    motorycle_manufacturer: str
-    motorycle_release_year: str
+    motorcycle_manufacturer: str
+    motorcycle_release_year: str
+
+
+class MotorcycleRatingPayload(BaseModel):
+    mail_user: str
+    motorcycle_name: str
+    motorcycle_manufacturer: str
+    motorcycle_release_year: str
+    star_rating: int

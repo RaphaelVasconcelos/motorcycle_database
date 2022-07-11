@@ -13,7 +13,7 @@ def action_for_this_favorite_motorcycle(
     favorite_motorcycle: FavoriteMotorcycle,
     repository: MongoDbFavoriteMotorcycleRepository
 ):
-    actual_favorite_motorcycles = repository.get_favorite_motorcycle_list(favorite_motorcycle)
-    if favorite_motorcycle.motorycle_name in actual_favorite_motorcycles:
+    actual_favorite_motorcycles = repository.get_favorite_motorcycles(favorite_motorcycle)
+    if favorite_motorcycle.motorcycle_name in actual_favorite_motorcycles:
         return ToggleFavorite.REMOVE
     return ToggleFavorite.ADD

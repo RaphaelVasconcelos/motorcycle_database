@@ -14,11 +14,11 @@ class MongoDbFavoriteMotorcycleRepository(FavoriteMotorcycleRepository):
         collection_name = self.motorcycle_db['users']
         result = collection_name.update_one(
             {'mail': favorite_motorcycle.mail_user},
-            {'$addToSet': {'favorite_motorcycles': favorite_motorcycle.motorycle_name}}
+            {'$addToSet': {'favorite_motorcycles': favorite_motorcycle.motorcycle_name}}
         )
         return result.modified_count > 0
 
-    def get_favorite_motorcycle_list(self, favorite_motorcycle: FavoriteMotorcycle):
+    def get_favorite_motorcycles(self, favorite_motorcycle: FavoriteMotorcycle):
         collection_name = self.motorcycle_db['users']
         cursor = collection_name.find_one(
             {'mail': favorite_motorcycle.mail_user},
@@ -31,6 +31,6 @@ class MongoDbFavoriteMotorcycleRepository(FavoriteMotorcycleRepository):
         collection_name = self.motorcycle_db['users']
         result = collection_name.update_one(
             {'mail': favorite_motorcycle.mail_user},
-            {'$pull': {'favorite_motorcycles': favorite_motorcycle.motorycle_name}}
+            {'$pull': {'favorite_motorcycles': favorite_motorcycle.motorcycle_name}}
         )
         return result.modified_count > 0

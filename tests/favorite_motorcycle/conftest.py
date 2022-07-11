@@ -9,12 +9,12 @@ from src.models.user.user_data_from_client import UserDataFromClient
 
 
 @pytest.fixture
-def favorite_motorycle_data_from_client_message():
+def favorite_motorcycle_data_from_client_message():
     return {
         'mail_user': "foo@bar.com",
-        'motorycle_name': "CB",
-        'motorycle_manufacturer': "HONDA",
-        'motorycle_release_year': '2021',
+        'motorcycle_name': "CB",
+        'motorcycle_manufacturer': "HONDA",
+        'motorcycle_release_year': '2021',
     }
 
 
@@ -37,12 +37,12 @@ def client_payload(user_data_from_client_message):
 
 
 @pytest.fixture
-def favorite_motorcycle_payload(favorite_motorycle_data_from_client_message):
+def favorite_motorcycle_payload(favorite_motorcycle_data_from_client_message):
     return FavoriteMotorcyclePayload(
-        mail_user=favorite_motorycle_data_from_client_message["mail_user"],
-        motorycle_name=favorite_motorycle_data_from_client_message["motorycle_name"],
-        motorycle_manufacturer=favorite_motorycle_data_from_client_message["motorycle_manufacturer"],
-        motorycle_release_year=favorite_motorycle_data_from_client_message["motorycle_release_year"]
+        mail_user=favorite_motorcycle_data_from_client_message["mail_user"],
+        motorcycle_name=favorite_motorcycle_data_from_client_message["motorcycle_name"],
+        motorcycle_manufacturer=favorite_motorcycle_data_from_client_message["motorcycle_manufacturer"],
+        motorcycle_release_year=favorite_motorcycle_data_from_client_message["motorcycle_release_year"]
     )
 
 
@@ -52,8 +52,8 @@ def user_data_from_client(user_data_from_client_message):
 
 
 @pytest.fixture
-def favorite_motorcycle_data_from_client(favorite_motorycle_data_from_client_message):
-    return FavoriteMotorcycleDataFromClient.parse_obj(favorite_motorycle_data_from_client_message)
+def favorite_motorcycle_data_from_client(favorite_motorcycle_data_from_client_message):
+    return FavoriteMotorcycleDataFromClient.parse_obj(favorite_motorcycle_data_from_client_message)
 
 
 @pytest.fixture
@@ -62,8 +62,8 @@ def user(user_data_from_client_message):
 
 
 @pytest.fixture
-def favorite_motorcycle(favorite_motorycle_data_from_client_message):
-    return FavoriteMotorcycle.parse_obj(favorite_motorycle_data_from_client_message)
+def favorite_motorcycle(favorite_motorcycle_data_from_client_message):
+    return FavoriteMotorcycle.parse_obj(favorite_motorcycle_data_from_client_message)
 
 
 @pytest.fixture
